@@ -59,7 +59,7 @@
           }
           for(var i=0; i<document.getElementsByClassName("halfslide").length; i++){
             document.getElementsByClassName("halfslide")[i].style.top = document.getElementsByClassName("top-bar")[0].offsetHeight + "px";
-            document.getElementsByClassName("halfslide")[i].style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].offsetHeight)/2 + "px";
+            document.getElementsByClassName("halfslide")[i].style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].offsetHeight)*0.7 + "px";
           }
         });
         var category_name = ['fablication','modeling','remake','game','photo','hobby'];
