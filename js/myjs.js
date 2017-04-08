@@ -28,16 +28,50 @@
         });
         $(window).on('load',function(){
           document.getElementsByClassName("stacked-for-small")[0].children[0].style.backgroundColor = '#DB8700';
+          for(var i=0; i<document.getElementsByClassName("halfslide")[i].length; i++){            
+            document.getElementsByClassName("halfslide")[i].style.innerHTML = "in";
+          }
         });
-        $(window).on('load resize', function(){
-          document.getElementById("top_title").style.top = (window.innerHeight - document.getElementById("top_title").clientHeight)/2 + "px";          
+        $(window).on('load resize', function(){          
+          var count = 0;
+          if(window.innerWidth<1024){
+            for(var i=0; i<document.getElementsByClassName("halfslide").length; i++){
+              document.getElementsByClassName("halfslide")[i].style.width = "100%";                        
+              //if(document.getElementsByClassName("halfslide")[i].style.innerHTML == "in"){
+                if(count%2 == 0){
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#595241";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#595241";
+                }else{
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#8A0917";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#8A0917";
+                }
+                count++;
+              //}
+            }
+          }else{
+            for(var i=0; i<document.getElementsByClassName("halfslide").length; i++){
+              document.getElementsByClassName("halfslide")[i].style.width = "50%";                        
+              //if(document.getElementsByClassName("halfslide")[i].style.innerHTML == "in"){              
+                if(count%4 == 0 || (count-3)%4 == 0){
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#595241";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#595241";
+                }else{
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#8A0917";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#8A0917";
+                }
+                count++;                
+              }              
+            //}            
+          }
+
+          document.getElementById("top_title").style.top = ((window.innerHeight - document.getElementById("top_title").clientHeight)*0.7)/2 + "px";          
           document.getElementById("top_slide").style.top = document.getElementsByClassName("top-bar")[0].clientHeight + "px";
-          document.getElementById("top_slide").style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].clientHeight) + "px";
-          document.getElementById("top_slide_blend").style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].clientHeight) + "px";        
+          document.getElementById("top_slide").style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].clientHeight)*0.7 + "px";
+          document.getElementById("top_slide_blend").style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].clientHeight)*0.7 + "px";        
           for(var i=0; i<document.getElementsByClassName("slide").length; i++){
             document.getElementsByClassName("slide")[i].style.top = document.getElementsByClassName("top-bar")[0].clientHeight + "px";
             document.getElementsByClassName("slide")[i].style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].clientHeight) + "px";
-          }                  
+          }
           $('.slide_intro').each(function(i, element) {
               document.getElementsByClassName("slide_intro")[i].innerHTML = slide_intro_text[i];
               $clamp(element, { clamp: 1});
@@ -62,23 +96,52 @@
             document.getElementsByClassName("halfslide")[i].style.height = (window.innerHeight - document.getElementsByClassName("top-bar")[0].offsetHeight)*0.7 + "px";
           }
         });
-        var category_name = ['fablication','modeling','remake','game','photo','hobby'];
+        var category_name = ['fablication','modeling','remake','game','photo'];
 
-        function category_filter(num){          
+        function category_filter(num){
           for(var i=0; i<document.getElementsByClassName("stacked-for-small")[0].children.length; i++){
             document.getElementsByClassName("stacked-for-small")[0].children[i].style.backgroundColor = 'rgba(0,0,0,0)';
           }
           document.getElementsByClassName("stacked-for-small")[0].children[num+1].style.backgroundColor = '#DB8700';
           for(var i=0; i<category_name.length; i++){
-            for(var j=0; j<document.getElementsByClassName(category_name[i]).length; j++){
-              document.getElementsByClassName(category_name[i])[j].style.display = "inline-block";
-            }
-          }
-          for(var i=0; i<category_name.length; i++){
-            if(i!=num && num!=-1){
+            if(i==num || num==-1){
               for(var j=0; j<document.getElementsByClassName(category_name[i]).length; j++){
-                document.getElementsByClassName(category_name[i])[j].style.display = "none";
+                document.getElementsByClassName(category_name[i])[j].style.innerHTML = "in";                
+                $(document.getElementsByClassName(category_name[i])[j]).fadeIn("fast");
+              }
+            }else{
+              for(var j=0; j<document.getElementsByClassName(category_name[i]).length; j++){
+                document.getElementsByClassName(category_name[i])[j].style.innerHTML = "out";
+                $(document.getElementsByClassName(category_name[i])[j]).fadeOut("fast");
               }
             }
           }
+          var count = 0;
+          if(window.innerWidth<1024){
+            for(var i=0; i<document.getElementsByClassName("halfslide").length; i++){
+              if(document.getElementsByClassName("halfslide")[i].style.innerHTML == "in"){
+                if(count%2 == 0){
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#595241";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#595241";
+                }else{
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#8A0917";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#8A0917";
+                }
+                count++;
+              }
+            }
+          }else{
+            for(var i=0; i<document.getElementsByClassName("halfslide").length; i++){
+              if(document.getElementsByClassName("halfslide")[i].style.innerHTML == "in"){              
+                if(count%4 == 0 || (count-3)%4 == 0){
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#595241";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#595241";
+                }else{
+                  document.getElementsByClassName("slide_title")[i].style.backgroundColor = "#8A0917";
+                  document.getElementsByClassName("slide_body")[i].style.backgroundColor = "#8A0917";
+                }
+                count++;                
+              }              
+            }            
+          }                    
         }
