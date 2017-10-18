@@ -1,2 +1,2 @@
 # ぽんこつのポートフォリオ
-[kzkponkotu.github.io/portfolio](kzkponkotu.github.io/portfolio)
+[https://kzkponkotu.github.io/portfolio/](https://kzkponkotu.github.io/portfolio/)
