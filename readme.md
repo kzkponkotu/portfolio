@@ -1,2 +1,3 @@
-# ぽんこつのポートフォリオ
-[https://kzkponkotu.github.io/portfolio/](https://kzkponkotu.github.io/portfolio/)
+# ポートフォリオ
+Google Siteに移行
+[https://sites.google.com/view/shunyakizaki-portfolio](https://sites.google.com/view/shunyakizaki-portfolio)
